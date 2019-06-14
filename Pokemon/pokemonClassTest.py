@@ -9,3 +9,11 @@ def test_initializes_correctly():
     assert steve.attack == 5
     assert steve.defense == 5
     assert steve.speed == 5
+
+    jazz = Pokemon("Jazz", "Bellsprout")
+    assert jazz.nickname == "Jazz"
+    assert jazz.species == "Bellsprout"
+    assert jazz.hitpoints == 0
+
+# def test_changes_stat():
+#     jazz = Pokemon()
