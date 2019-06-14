@@ -1,20 +1,17 @@
 import pokebase as pb
 
 class Pokemon:
-    def __init__(self, name, pokemonSpecies, hp = 0, atk = 0, defen = 0, spd = 0):
+    def __init__(self, name, pokemonSpecies, stats = [0, 0, 0, 0]):
         self.nickname = name
         self.species = pokemonSpecies
-        self.hitpoints = hp
-        self.attack = atk
-        self.defense = defen
-        self.speed = spd
+        self.stats = {"hp" : stats[0], "atk" : stats[1], "def" : stats[2], "spd" : stats[3]}
 
     def changeStat(self, statName, newValue):
         if statName == "hp":
-            self.hitpoints = newValue
+            self.stats["hp"] = newValue
         elif statName == "atk":
-            self.attack = newValue
+            self.stats["atk"] = newValue
         elif statName == "def":
-            self.defense = newValue
+            self.stats["def"] = newValue
         elif statName == "spd":
-            self.speed = newValue
+            self.stats["spd"] = newValue
