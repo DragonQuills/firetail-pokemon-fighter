@@ -8,3 +8,13 @@ class Pokemon:
         self.attack = atk
         self.defense = defen
         self.speed = spd
+
+    def changeStat(self, statName, newValue):
+        if statName == "hp":
+            self.hitpoints = newValue
+        elif statName == "atk":
+            self.attack = newValue
+        elif statName == "def":
+            self.defense = newValue
+        elif statName == "spd":
+            self.speed = newValue
