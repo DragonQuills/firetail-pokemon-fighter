@@ -27,6 +27,5 @@ class Pokemon:
     def _createMovesList(self, namesList):
         movesList = []
         for name in namesList:
-            if name != "":
-                movesList.append(Move(name))
+            movesList.append(Move(name))
         return movesList
