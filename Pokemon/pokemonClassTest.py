@@ -18,7 +18,7 @@ def test_initializes_correctly():
     assert jazz.name == "Jazz"
     assert jazz.species == "Bellsprout"
     assert jazz.stats["hp"] == 0
-    assert jazz.types[0] == ""
+    assert jazz.types == []
 
 def test_changes_stat():
     jazz = Pokemon("Jazz", "Bellsprout")
