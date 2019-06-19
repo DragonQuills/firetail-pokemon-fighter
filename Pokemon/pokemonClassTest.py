@@ -2,18 +2,23 @@ from pokemonClass import Pokemon
 import pytest
 
 def test_initializes_correctly():
-    steve = Pokemon("Steve", "Charmander", [20, 5, 5, 5])
-    assert steve.nickname == "Steve"
+    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch", "growl"])
+    assert steve.name == "Steve"
     assert steve.species == "Charmander"
+    assert steve.types[0] == "fire"
+    assert steve.types[1] == ""
     assert steve.stats["hp"] == 20
     assert steve.stats["atk"]== 5
     assert steve.stats["def"] == 5
     assert steve.stats["spd"]== 5
 
     jazz = Pokemon("Jazz", "Bellsprout")
-    assert jazz.nickname == "Jazz"
+    assert jazz.name == "Jazz"
     assert jazz.species == "Bellsprout"
     assert jazz.stats["hp"] == 0
+    assert jazz.types[0] == ""
+
+    #Add tests for moves!
 
 def test_changes_stat():
     jazz = Pokemon("Jazz", "Bellsprout")
