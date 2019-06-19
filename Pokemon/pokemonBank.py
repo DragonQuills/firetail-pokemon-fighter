@@ -4,7 +4,7 @@ class PokeBank:
     def __init__(self, fileName = "bankSaveFile.txt"):
         self.allPokemon = {}
         self.saveFileName = fileName
-        #self.loadBank()
+        self.loadBank()
 
     def addPokemon(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
         self.allPokemon[nickname] = Pokemon(nickname, pokemonSpecies, pokeTypes, stats, newMoves)
@@ -12,7 +12,7 @@ class PokeBank:
     def getAllNames(self):
         pokeList = []
         for name, pokemon in self.allPokemon.items():
-            pokeList.append(name + ": " + pokemon.species)
+            pokeList.append(name)
         return pokeList
 
 #     def saveBank(self):
@@ -27,19 +27,22 @@ class PokeBank:
 #             saveFile.write(saveData)
 #         saveFile.close()
 #
-#     def loadBank(self):
-#         try:
-#             loadFile = open(self.saveFileName, 'r')
-#         except:
-#             return
-#         for line in loadFile:
-#             data = line.split(", ")
-#             name = data[0]
-#             species = data[1]
-#             stats = [data[2], data[3], data[4], data[5]]
-#             self.addPokemon(name, species, stats)
-#         loadFile.close()
-#
-# bank = PokeBank()
+    def loadBank(self):
+        try:
+            loadFile = open(self.saveFileName, 'r')
+        except:
+            print("Error occured opening file " + self.saveFileName)
+            return
+        for line in loadFile:
+            print (line)
+            data = line.split(", ")
+            name = data[0]
+            species = data[1]
+            types = [data[2], data[3]]
+            stats = [data[4], data[5], data[6], data[7]]
+            moves = [data[8], data[9], data[10], data[11]]
+            self.addPokemon(name, species, types, stats, moves)
+        loadFile.close()
+bank = PokeBank("testBankLoad.txt")
 # bank.addPokemon("Shell", "Dragonite")
 # bank.saveBank()

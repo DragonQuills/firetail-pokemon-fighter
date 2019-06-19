@@ -12,15 +12,18 @@ def test_returns_names():
     bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
     bank.addPokemon("Doggo", "Lillipup", ["normal"], [15, 5, 5, 5])
     allMon = bank.getAllNames()
-    assert allMon[0] == "Jazz: Bellsprout"
-    assert allMon[1] == "Shell: Dragonite"
-    assert allMon[2] == "Doggo: Lillipup"
+    assert allMon[0] == "Jazz"
+    assert allMon[1] == "Shell"
+    assert allMon[2] == "Doggo"
 
+def test_load_on_open():
+    file = open("testBankLoad.txt", "w")
+    file.write("Jackie, Pumpkaboo, grass, ghost, 25, 11, 6, 7, , , , \n")
+    file.write("Doggo, Lillipup, normal, , 15, 5, 5, 5, , , , \n")
+    file.close()
 
-
-
-
-# def test_save_and_load():
-#     file = open("testBankRead.txt", "w")
-#     file.write("Jackie Pumpkaboo 25 ")
-#     bank
+    bank = PokeBank("testBankLoad.txt")
+    assert bank.getAllNames()[0] == "Jackie"
+    assert bank.getAllNames()[1] == "Doggo"
+    assert bank.allPokemon["Jackie"].types[0] == "grass"
+    assert bank.allPokemon["Doggo"].types[1] == ""
