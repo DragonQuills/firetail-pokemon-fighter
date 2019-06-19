@@ -10,7 +10,7 @@ def test_returns_names():
     bank = PokeBank()
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
-    bank.addPokemon("Doggo", "Lillipup", ["normal"], [15, 5, 5, 5])
+    bank.addPokemon("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
     allMon = bank.getAllNames()
     assert allMon[0] == "Jazz"
     assert allMon[1] == "Shell"
@@ -27,3 +27,18 @@ def test_load_on_open():
     assert bank.getAllNames()[1] == "Doggo"
     assert bank.allPokemon["Jackie"].types[0] == "grass"
     assert bank.allPokemon["Doggo"].types[1] == ""
+
+def test_saves_then_loads():
+    file = open("testBankSave.txt", "w")
+    file.close()
+
+    bank = PokeBank("testBankSave.txt")
+    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
+    bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
+    bank.addPokemon("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
+    bank.saveBank()
+
+    bank.loadBank()
+    assert bank.getAllNames()[0] == "Jazz"
+    assert bank.getAllNames()[1] == "Shell"
+    assert bank.getAllNames()[2] == "Dogo"

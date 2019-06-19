@@ -43,6 +43,6 @@ class PokeBank:
             moves = [data[8], data[9], data[10], data[11]]
             self.addPokemon(name, species, types, stats, moves)
         loadFile.close()
-bank = PokeBank("testBankLoad.txt")
+
 # bank.addPokemon("Shell", "Dragonite")
 # bank.saveBank()
