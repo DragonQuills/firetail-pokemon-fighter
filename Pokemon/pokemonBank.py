@@ -15,18 +15,19 @@ class PokeBank:
             pokeList.append(name)
         return pokeList
 
-#     def saveBank(self):
-#         saveFile = None
-#         try:
-#             saveFile = open(self.saveFileName, 'r+')
-#         except:
-#             saveFile = open(self.saveFileName, 'w')
-#
-#         for name, pokemon in self.allPokemon.items():
-#             saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + "\n"
-#             saveFile.write(saveData)
-#         saveFile.close()
-#
+    def saveBank(self):
+        saveFile = None
+        try:
+            saveFile = open(self.saveFileName, 'r+')
+        except:
+            saveFile = open(self.saveFileName, 'w')
+
+        for name, pokemon in self.allPokemon.items():
+            saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + ", " + pokemon.types[1] + ", " + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + pokemon.moves[0] + ", " + pokemon.moves[1] + ", " + pokemon.moves[2] + ", "
+            + pokemon.moves[3] + "\n"
+            saveFile.write(saveData)
+        saveFile.close()
+
     def loadBank(self):
         try:
             loadFile = open(self.saveFileName, 'r')

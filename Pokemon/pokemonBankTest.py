@@ -29,9 +29,6 @@ def test_load_on_open():
     assert bank.allPokemon["Doggo"].types[1] == ""
 
 def test_saves_then_loads():
-    file = open("testBankSave.txt", "w")
-    file.close()
-
     bank = PokeBank("testBankSave.txt")
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
