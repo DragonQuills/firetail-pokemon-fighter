@@ -13,12 +13,14 @@ def test_initializes_correctly():
     assert steve.stats["spd"] == 5
     assert steve.moves[0].name == "ember"
     assert steve.moves[1].name == "scratch"
+    assert steve.moves[1].type == "normal"
 
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.name == "Jazz"
     assert jazz.species == "Bellsprout"
     assert jazz.stats["hp"] == 0
-    assert jazz.types == []
+    assert jazz.types == ["", ""]
+    assert jazz.moves == []
 
 def test_changes_stat():
     jazz = Pokemon("Jazz", "Bellsprout")

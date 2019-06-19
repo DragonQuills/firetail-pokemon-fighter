@@ -1,7 +1,7 @@
 from pokemonMoves import Move
 
 class Pokemon:
-    def __init__(self, nickname, pokemonSpecies, pokeTypes = [], stats = [0, 0, 0, 0], newMoves = []):
+    def __init__(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
         self.name = nickname
         self.species = pokemonSpecies
         self.stats = {"hp" : stats[0], "atk" : stats[1], "def" : stats[2], "spd" : stats[3]}
