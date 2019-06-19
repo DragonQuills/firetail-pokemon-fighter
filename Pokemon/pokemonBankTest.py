@@ -3,16 +3,16 @@ from pokemonClass import Pokemon
 
 def test_adds_pokemon():
     bank = PokeBank()
-    bank.addPokemon("Jazz", "Bellsprout", [15, 5, 5, 5])
+    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     jazz = Pokemon("Jazz", "Bellsprout", [15, 5, 5, 5])
-    assert bank.allPokemon["Jazz"].nickname == jazz.nickname
+    assert bank.allPokemon["Jazz"].name == jazz.name
 
 def test_returns_names():
     bank = PokeBank()
-    bank.addPokemon("Jazz", "Bellsprout", [15, 5, 5, 5])
-    bank.addPokemon("Shell", "Dragonite", [65, 22, 18, 35])
-    bank.addPokemon("Doggo", "Lillipup", [15, 5, 5, 5])
-    allMon = bank.getAllPokemon()
+    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
+    bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
+    bank.addPokemon("Doggo", "Lillipup", ["normal"], [15, 5, 5, 5])
+    allMon = bank.getAllNames()
     assert allMon[0] == "Jazz: Bellsprout"
     assert allMon[1] == "Shell: Dragonite"
     assert allMon[2] == "Doggo: Lillipup"
