@@ -4,8 +4,7 @@ from pokemonClass import Pokemon
 def test_adds_pokemon():
     bank = PokeBank()
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
-    jazz = Pokemon("Jazz", "Bellsprout", [15, 5, 5, 5])
-    assert bank.allPokemon["Jazz"].name == jazz.name
+    assert bank.allPokemon["Jazz"].name == "Jazz"
 
 def test_returns_names():
     bank = PokeBank()

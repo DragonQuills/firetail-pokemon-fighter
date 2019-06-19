@@ -6,7 +6,7 @@ class PokeBank:
         self.saveFileName = fileName
         #self.loadBank()
 
-    def addPokemon(self, nickname, pokemonSpecies, pokeTypes = [], stats = [0, 0, 0, 0], newMoves = []):
+    def addPokemon(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
         self.allPokemon[nickname] = Pokemon(nickname, pokemonSpecies, pokeTypes, stats, newMoves)
 
     def getAllNames(self):
