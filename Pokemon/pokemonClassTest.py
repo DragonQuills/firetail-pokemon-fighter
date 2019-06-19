@@ -20,8 +20,6 @@ def test_initializes_correctly():
     assert jazz.stats["hp"] == 0
     assert jazz.types[0] == ""
 
-    #Add tests for moves!
-
 def test_changes_stat():
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.stats["hp"] == 0
@@ -40,3 +38,12 @@ def test_changes_stat():
 
     jazz.changeStat("spd", 6)
     assert jazz.stats["spd"] == 6
+
+def test_changes_move():
+    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch"])
+    steve.changeMove(0, "flamethrower")
+
+def test_changes_species():
+    jazz = Pokemon("Jazz", "Bellsprout")
+    jazz.changeSpecies("Weepinbell")
+    assert jazz.species == "Weepinbell"

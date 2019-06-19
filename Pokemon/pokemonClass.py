@@ -21,6 +21,9 @@ class Pokemon:
     def changeMove(self, moveNum, newMoveName):
         pass
 
+    def changeSpecies(self, newSpecies):
+        self.species = newSpecies
+
     def _createMovesList(self, namesList):
         movesList = []
         for name in namesList:
