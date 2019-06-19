@@ -6,7 +6,7 @@ class PokeBank:
         self.saveFileName = fileName
         #self.loadBank()
 
-    def addPokemon(self, nickname, pokemonSpecies, pokeTypes, stats, newMoves = []):
+    def addPokemon(self, nickname, pokemonSpecies, pokeTypes = [], stats = [0, 0, 0, 0], newMoves = []):
         self.allPokemon[nickname] = Pokemon(nickname, pokemonSpecies, pokeTypes, stats, newMoves)
 
     def getAllNames(self):
@@ -14,7 +14,7 @@ class PokeBank:
         for name, pokemon in self.allPokemon.items():
             pokeList.append(name + ": " + pokemon.species)
         return pokeList
-#
+
 #     def saveBank(self):
 #         saveFile = None
 #         try:
@@ -23,7 +23,7 @@ class PokeBank:
 #             saveFile = open(self.saveFileName, 'w')
 #
 #         for name, pokemon in self.allPokemon.items():
-#             saveData = name + ", " + pokemon.species + ", " + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + "\n"
+#             saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + "\n"
 #             saveFile.write(saveData)
 #         saveFile.close()
 #
@@ -32,7 +32,6 @@ class PokeBank:
 #             loadFile = open(self.saveFileName, 'r')
 #         except:
 #             return
-#
 #         for line in loadFile:
 #             data = line.split(", ")
 #             name = data[0]
