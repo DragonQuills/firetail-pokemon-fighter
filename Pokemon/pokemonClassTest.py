@@ -2,7 +2,7 @@ from pokemonClass import Pokemon
 import pytest
 
 def test_initializes_correctly():
-    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch"])
+    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch", "", ""])
     assert steve.name == "Steve"
     assert steve.species == "Charmander"
     assert steve.types[0] == "fire"
@@ -14,13 +14,14 @@ def test_initializes_correctly():
     assert steve.moves[0].name == "ember"
     assert steve.moves[1].name == "scratch"
     assert steve.moves[1].type == "normal"
+    assert steve.moves[2].name == ""
 
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.name == "Jazz"
     assert jazz.species == "Bellsprout"
     assert jazz.stats["hp"] == 0
     assert jazz.types == ["", ""]
-    assert jazz.moves == []
+    assert jazz.moves[0].name == ""
 
 def test_changes_stat():
     jazz = Pokemon("Jazz", "Bellsprout")
