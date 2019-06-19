@@ -2,15 +2,17 @@ from pokemonClass import Pokemon
 import pytest
 
 def test_initializes_correctly():
-    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch", "growl"])
+    steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch"])
     assert steve.name == "Steve"
     assert steve.species == "Charmander"
     assert steve.types[0] == "fire"
     assert steve.types[1] == ""
     assert steve.stats["hp"] == 20
-    assert steve.stats["atk"]== 5
+    assert steve.stats["atk"] == 5
     assert steve.stats["def"] == 5
-    assert steve.stats["spd"]== 5
+    assert steve.stats["spd"] == 5
+    assert steve.moves[0].name == "ember"
+    assert steve.moves[1].name == "scratch"
 
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.name == "Jazz"

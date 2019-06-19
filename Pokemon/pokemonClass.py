@@ -1,7 +1,7 @@
-import pokebase as pb
+from pokemonMoves import Move
 
 class Pokemon:
-    def __init__(self, nickname, pokemonSpecies, pokeTypes = ["",""], stats = [0, 0, 0, 0], newMoves = ["move1", "move2", "move3", "move4"]):
+    def __init__(self, nickname, pokemonSpecies, pokeTypes = ["",""], stats = [0, 0, 0, 0], newMoves = []):
         self.name = nickname
         self.species = pokemonSpecies
         self.stats = {"hp" : stats[0], "atk" : stats[1], "def" : stats[2], "spd" : stats[3]}
@@ -22,4 +22,8 @@ class Pokemon:
         pass
 
     def _createMovesList(self, namesList):
-        return []
+        movesList = []
+        for name in namesList:
+            if name != "":
+                movesList.append(Move(name))
+        return movesList
