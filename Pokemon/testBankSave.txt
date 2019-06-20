@@ -1,0 +1,3 @@
+Jazz, Bellsprout, grass, poison, 15, 5, 5, 5, , , 
+Shell, Dragonite, dragon, flying, 65, 22, 18, 35, , , 
+Doggo, Lillipup, normal, , 15, 5, 5, 5, , , 

@@ -23,8 +23,8 @@ class PokeBank:
             saveFile = open(self.saveFileName, 'w')
 
         for name, pokemon in self.allPokemon.items():
-            saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + ", " + pokemon.types[1] + ", " + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + pokemon.moves[0] + ", " + pokemon.moves[1] + ", " + pokemon.moves[2] + ", "
-            + pokemon.moves[3] + "\n"
+            saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + ", " + pokemon.types[1] + ", " + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + ", " + pokemon.moves[0].name + ", " + pokemon.moves[1].name + ", " + pokemon.moves[2].name + ", " + pokemon.moves[3].name + "\n"
+            print(saveData)
             saveFile.write(saveData)
         saveFile.close()
 
@@ -34,16 +34,20 @@ class PokeBank:
         except:
             print("Error occured opening file " + self.saveFileName)
             return
-        for line in loadFile:
-            print (line)
-            data = line.split(", ")
-            name = data[0]
-            species = data[1]
-            types = [data[2], data[3]]
-            stats = [data[4], data[5], data[6], data[7]]
-            moves = [data[8], data[9], data[10], data[11]]
-            self.addPokemon(name, species, types, stats, moves)
-        loadFile.close()
+        try:
+            for line in loadFile:
+                print(line)
+                data = line.split(", ")
+                name = data[0]
+                species = data[1]
+                types = [data[2], data[3]]
+                stats = [data[4], data[5], data[6], data[7]]
+                moves = [data[8], data[9], data[10], data[11]]
+                self.addPokemon(name, species, types, stats, moves)
+                loadFile.close()
+        except:
+            print("Error occured reading from file.")
+            loadFile.close()
+            return
 
-# bank.addPokemon("Shell", "Dragonite")
-# bank.saveBank()
+bank = PokeBank("testBankLoad.txt")
