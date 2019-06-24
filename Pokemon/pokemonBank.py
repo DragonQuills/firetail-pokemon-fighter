@@ -44,7 +44,7 @@ class PokeBank:
                 stats = [data[4], data[5], data[6], data[7]]
                 moves = [data[8], data[9], data[10], data[11]]
                 self.addPokemon(name, species, types, stats, moves)
-                loadFile.close()
+            loadFile.close()
         except:
             print("Error occured reading from file.")
             loadFile.close()

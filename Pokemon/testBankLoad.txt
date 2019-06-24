@@ -1,2 +1,2 @@
 Jackie, Pumpkaboo, grass, ghost, 25, 11, 6, 7, , , , 
-Doggo, Lillipup, normal, , 15, 5, 5, 5, , , ,
+Doggo, Lillipup, normal, , 15, 5, 5, 5, , , , 

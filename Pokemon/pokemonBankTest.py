@@ -18,7 +18,7 @@ def test_returns_names():
 
 def test_load_on_open():
     file = open("testBankLoad.txt", "w")
-    file.write("Jackie, Pumpkaboo, grass, ghost, 25, 11, 6, 7, , , , \n")
+    file.write("Jackie, Pumpkaboo, grass, ghost, 25, 11, 6, 7, astonish, , , \n")
     file.write("Doggo, Lillipup, normal, , 15, 5, 5, 5, , , , \n")
     file.close()
 
@@ -27,6 +27,7 @@ def test_load_on_open():
     assert bank.getAllNames()[1] == "Doggo"
     assert bank.allPokemon["Jackie"].types[0] == "grass"
     assert bank.allPokemon["Doggo"].types[1] == ""
+    assert bank.
 
 def test_saves_then_loads():
     bank = PokeBank("testBankSave.txt")
