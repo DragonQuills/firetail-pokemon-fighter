@@ -2,14 +2,16 @@ import pokebase as pb
 
 class Move:
     def __init__(self, moveName):
-        self.name = moveName
+        cleanName = moveName.lower().replace(" ", "-")
         try:
-            moveData = pb.move(moveName)
+            moveData = pb.move(cleanName)
         except:
+            self.name = cleanName
             self.type = ""
             self.power = -1
             self.accuracy = -1
             return
+        self.name = moveData.names[2].name
         self.type = moveData.type.name
         self.power = moveData.power
         self.accuracy = moveData.accuracy
