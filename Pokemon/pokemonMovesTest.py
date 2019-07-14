@@ -3,16 +3,23 @@ from pokemonMoves import Move
 def test_initializes_correctly():
     #testing for damage dealing moves
     scratch = Move("scratch")
-    assert scratch.name == "scratch"
+    assert scratch.name == "Scratch"
     assert scratch.type == "normal"
     assert scratch.power == 40
     assert scratch.accuracy == 100
 
     ember = Move("ember")
-    assert ember.name == "ember"
+    assert ember.name == "Ember"
     assert ember.type == "fire"
     assert ember.power == 40
     assert ember.accuracy == 100
+
+    #testing for move with spaces and upper case
+    jumpKick = Move("Jump Kick")
+    assert jumpKick.name == "Jump Kick"
+    assert jumpKick.type == "fighting"
+    assert jumpKick.power == 100
+    assert jumpKick.accuracy == 95
 
     #testing for non-valid moves
     blank = Move("")
