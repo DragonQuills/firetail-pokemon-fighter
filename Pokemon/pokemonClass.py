@@ -19,7 +19,19 @@ class Pokemon:
             self.stats["spd"] = newValue
 
     def changeMove(self, moveNum, newMoveName):
-        pass
+        moveNum = moveNum - 1
+        newMove = Move(newMoveName)
+
+        #if this isn't a real move, return false and don't change the move
+        if newMove.accuracy == -1:
+            return False
+
+        #if it is a real move
+        if moveNum >= len(self.moves): #and the slot doesn't have a move in it
+            self.moves.append(newMove) #add the mvoe as a new move
+        else: #and the slot already has a move in it
+            self.moves[moveNum] = newMove #replace the old move with the new one
+        return True
 
     def changeSpecies(self, newSpecies):
         self.species = newSpecies
