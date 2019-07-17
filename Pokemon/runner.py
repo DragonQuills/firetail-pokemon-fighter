@@ -55,9 +55,16 @@ def newPokemon():
     print("")
     return
 
+def changePokemon():
+    global bank
+    pokeList = bank.getAllNames()
+    print("Which Pokeon would you like to change?")
+    for i in range(0, len(pokeList)):
+        print(str(i+1) + ". " + pokeList[i])
 
 
-bank = PokeBank()
+bank = PokeBank("realBankFile.txt")
+bank.loadBank()
 choice = "0"
 print("Welcome Firetail!")
 while choice != "3" and choice != "quit" and choice != "exit":
@@ -70,5 +77,7 @@ while choice != "3" and choice != "quit" and choice != "exit":
 
     if(choice == "1"):
         newPokemon()
+    elif(choice == "2"):
+        changePokemon()
 bank.saveBank()
 print("Great, see you again soon!")

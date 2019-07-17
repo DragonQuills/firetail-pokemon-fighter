@@ -18,13 +18,14 @@ def test_returns_names():
     assert allMon[1] == "Shell"
     assert allMon[2] == "Doggo"
 
-def test_load_on_open():
+def test_loads_correctly():
     file = open("testBankLoad.txt", "w")
     file.write("Jackie, Pumpkaboo, grass, ghost, 25, 11, 6, 7, astonish, , , \n")
     file.write("Doggo, Lillipup, normal, , 15, 5, 5, 5, , , , \n")
     file.close()
 
     bank = PokeBank("testBankLoad.txt")
+    bank.loadBank()
     assert bank.getAllNames()[0] == "Jackie"
     assert bank.getAllNames()[1] == "Doggo"
     assert bank.allPokemon["Jackie"].types[0] == "grass"

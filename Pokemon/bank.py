@@ -4,7 +4,6 @@ class PokeBank:
     def __init__(self, fileName = "bankSaveFile.txt"):
         self.allPokemon = {}
         self.saveFileName = fileName
-        self.loadBank()
 
     def addPokemon(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
         self.allPokemon[nickname] = Pokemon(nickname, pokemonSpecies, pokeTypes, stats, newMoves)
@@ -18,13 +17,14 @@ class PokeBank:
     def saveBank(self):
         saveFile = None
         try:
-            saveFile = open(self.saveFileName, 'r+')
-        except:
             saveFile = open(self.saveFileName, 'w')
+        except:
+            print("Error, couldn't save")
+            saveFile.close()
+            return
 
         for name, pokemon in self.allPokemon.items():
             saveData = name + ", " + pokemon.species + ", " + pokemon.types[0] + ", " + pokemon.types[1] + ", " + str(pokemon.stats["hp"])+ ", " + str(pokemon.stats["atk"]) + ", " + str(pokemon.stats["def"]) + ", " + str(pokemon.stats["spd"]) + ", " + pokemon.moves[0].name + ", " + pokemon.moves[1].name + ", " + pokemon.moves[2].name + ", " + pokemon.moves[3].name + "\n"
-            print(saveData)
             saveFile.write(saveData)
         saveFile.close()
 
@@ -36,7 +36,6 @@ class PokeBank:
             return
         try:
             for line in loadFile:
-                print(line)
                 data = line.split(", ")
                 name = data[0]
                 species = data[1]
