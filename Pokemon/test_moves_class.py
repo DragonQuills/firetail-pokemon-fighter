@@ -1,4 +1,4 @@
-from pokemonMoves import Move
+from moves import Move
 
 def test_initializes_correctly():
     #testing for damage dealing moves

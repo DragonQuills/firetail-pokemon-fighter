@@ -1,4 +1,4 @@
-from pokemonMoves import Move
+from moves import Move
 
 class Pokemon:
     def __init__(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):

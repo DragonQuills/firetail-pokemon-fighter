@@ -1,4 +1,4 @@
-from pokemonBank import PokeBank
+from bank import PokeBank
 from pokemonClass import Pokemon
 
 def test_adds_pokemon():

@@ -15,7 +15,7 @@ class Move:
         self.type = moveData.type.name
         self.power = moveData.power
         self.accuracy = moveData.accuracy
-        
+
     def __eq__(self, otherMove):
         if self.name == otherMove.name and self.type == otherMove.type and self.power == otherMove.power and self.accuracy == otherMove.accuracy:
             return True
