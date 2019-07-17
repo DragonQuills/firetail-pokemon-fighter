@@ -1,5 +1,5 @@
 from pokemonClass import Pokemon
-from pokemonMoves import Move
+from moves import Move
 import pytest
 
 def test_initializes_correctly():
@@ -60,8 +60,6 @@ def test_changes_move():
 
     #tests that a new move is appened
     assert steve.moves[2] == Move("bite")
-
-
 
 def test_changes_species():
     #testing species change for evolution
