@@ -1,7 +1,7 @@
-from pokemonClass import Pokemon
+from bank import PokeBank
 
 def newPokemon():
-    print ("Got it, create a new Pokeon.")
+    global bank
     newName = None
     species = None
     stats = [0, 0, 0, 0]
@@ -9,6 +9,7 @@ def newPokemon():
     type2 = None
     moves = ["", "", "", ""]
     allCorrect = "n"
+    print ("Got it, create a new Pokeon.")
 
     while allCorrect != "y":
         print ("Please enter their name.")
@@ -48,16 +49,16 @@ def newPokemon():
         allCorrect = input(">>> ")
         if len(allCorrect) > 0:
             allCorrect = allCorrect[0].lower()
-
+    print("I'm creating your Pokemon now. This might take a sec, hold on...")
+    bank.addPokemon(newName, species, [type1, type2], stats, moves)
     print("Got all that! Your new Pokemon has been created.")
     print("")
     return
 
 
 
-
+bank = PokeBank()
 choice = "0"
-
 print("Welcome Firetail!")
 while choice != "3" and choice != "quit" and choice != "exit":
     print ("What would you like to do?")
@@ -69,4 +70,5 @@ while choice != "3" and choice != "quit" and choice != "exit":
 
     if(choice == "1"):
         newPokemon()
+bank.saveBank()
 print("Great, see you again soon!")
