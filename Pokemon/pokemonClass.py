@@ -41,3 +41,10 @@ class Pokemon:
         for name in namesList:
             movesList.append(Move(name))
         return movesList
+
+    def changeType(self, typesList):
+        if len(typesList) == 2: #if given two types
+            self.types = typesList
+        else: #if only given one type
+            self.types = typesList #make the list that new list
+            self.types.append("") #then add a blank type so the database will save it correctly
