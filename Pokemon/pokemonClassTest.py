@@ -2,6 +2,7 @@ from pokemonClass import Pokemon
 import pytest
 
 def test_initializes_correctly():
+    #pokemon with type, stats, and moves
     steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch", "", ""])
     assert steve.name == "Steve"
     assert steve.species == "Charmander"
@@ -16,6 +17,7 @@ def test_initializes_correctly():
     assert steve.moves[1].type == "normal"
     assert steve.moves[2].name == ""
 
+    #testing pokemon with just name and species
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.name == "Jazz"
     assert jazz.species == "Bellsprout"
@@ -24,12 +26,14 @@ def test_initializes_correctly():
     assert jazz.moves[0].name == ""
 
 def test_changes_stat():
+    #testing default stats
     jazz = Pokemon("Jazz", "Bellsprout")
     assert jazz.stats["hp"] == 0
     assert jazz.stats["atk"] == 0
     assert jazz.stats["def"] == 0
     assert jazz.stats["spd"] == 0
 
+    #changing each stat
     jazz.changeStat("hp", 25)
     assert jazz.stats["hp"] == 25
 
@@ -47,6 +51,7 @@ def test_changes_move():
     steve.changeMove(0, "flamethrower")
 
 def test_changes_species():
+    #testing species change for evolution
     jazz = Pokemon("Jazz", "Bellsprout")
-    jazz.changeSpecies("Weepinbell")
-    assert jazz.species == "Weepinbell"
+    jazz.changeSpecies("Weepingbell")
+    assert jazz.species == "Weepingbell"

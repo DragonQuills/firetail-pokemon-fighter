@@ -2,11 +2,13 @@ from pokemonBank import PokeBank
 from pokemonClass import Pokemon
 
 def test_adds_pokemon():
+    #adding a pokmeon to the bank
     bank = PokeBank()
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     assert bank.allPokemon["Jazz"].name == "Jazz"
 
 def test_returns_names():
+    #adding several pokemon and returning their names
     bank = PokeBank()
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
@@ -27,7 +29,7 @@ def test_load_on_open():
     assert bank.getAllNames()[1] == "Doggo"
     assert bank.allPokemon["Jackie"].types[0] == "grass"
     assert bank.allPokemon["Doggo"].types[1] == ""
-    assert bank.
+    assert bank
 
 def test_saves_then_loads():
     bank = PokeBank("testBankSave.txt")
