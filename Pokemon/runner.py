@@ -7,6 +7,7 @@ def newPokemon():
     stats = [0, 0, 0, 0]
     type1 = None
     type2 = None
+    moves = ["", "", "", ""]
     allCorrect = "n"
 
     while allCorrect != "y":
@@ -23,7 +24,9 @@ def newPokemon():
         stats[1] = input("Attack: ")
         stats[2] = input("Defense: ")
         stats[3] = input("Speed: ")
-
+        for i in range(0, 4):
+            print("Please enter move number " + str(i+1) + " or hit enter to leave it blank.")
+            moves[i] = input(">>> ")
         print("")
         print("Here's the info you gave me...")
         print("")
@@ -38,6 +41,8 @@ def newPokemon():
         print("ATK: " + stats[1])
         print("DEF: " + stats[2])
         print("SPD: " + stats[3])
+        for i in range(0, 4):
+            print("Move number " + str(i+1) + ": " + moves[i])
         print("")
         print("Is that all correct?")
         allCorrect = input(">>> ")
