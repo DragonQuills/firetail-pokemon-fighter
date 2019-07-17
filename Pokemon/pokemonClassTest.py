@@ -1,4 +1,5 @@
 from pokemonClass import Pokemon
+from pokemonMoves import Move
 import pytest
 
 def test_initializes_correctly():
@@ -12,8 +13,8 @@ def test_initializes_correctly():
     assert steve.stats["atk"] == 5
     assert steve.stats["def"] == 5
     assert steve.stats["spd"] == 5
-    assert steve.moves[0].name == "ember"
-    assert steve.moves[1].name == "scratch"
+    assert steve.moves[0].name == "Ember"
+    assert steve.moves[1].name == "Scratch"
     assert steve.moves[1].type == "normal"
     assert steve.moves[2].name == ""
 
@@ -48,7 +49,19 @@ def test_changes_stat():
 
 def test_changes_move():
     steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch"])
-    steve.changeMove(0, "flamethrower")
+
+    #tests function returns true if a valid move is given and false if not
+    assert steve.changeMove(1, "fake move") == False
+    assert steve.changeMove(2, "fury swipes") == True
+    assert steve.changeMove(3, "bite") == True
+
+    #tests that fake move wasn't changed
+    assert steve.moves[0] != Move("fake move")
+
+    #tests that a new move is appened
+    assert steve.moves[2] == Move("bite")
+
+
 
 def test_changes_species():
     #testing species change for evolution
