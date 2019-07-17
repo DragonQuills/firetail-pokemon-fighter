@@ -66,3 +66,17 @@ def test_changes_species():
     jazz = Pokemon("Jazz", "Bellsprout")
     jazz.changeSpecies("Weepingbell")
     assert jazz.species == "Weepingbell"
+
+
+def test_changes_type():
+    #tests changing one type
+    trina = Pokemon("Trina", "customSpecies", ["water", ""])
+    trina.changeType(["grass"])
+    assert trina.types[0] == "grass"
+    assert trina.types[1] == ""
+    
+    #tests changing both types at once
+    tori = Pokemon("Tori", "Torchic", ["fire", ""])
+    tori.changeType(["fire", "fighting"])
+    assert tori.types[0] == "fire"
+    assert tori.types[1] == "fighting"
