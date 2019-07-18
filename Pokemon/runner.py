@@ -51,6 +51,7 @@ def newPokemon():
             allCorrect = allCorrect[0].lower()
     print("I'm creating your Pokemon now. This might take a sec, hold on...")
     bank.addPokemon(newName, species, [type1, type2], stats, moves)
+    bank.saveBank()
     print("Got all that! Your new Pokemon has been created.")
     print("")
     return
@@ -61,6 +62,7 @@ def changePokemon():
     pokeNum = " "
     pokeData = ""
     while(pokeNum != "quit"):
+        print("")
         print("Which Pokemon would you like to change? (Enter their number)")
         for i in range(0, len(pokeList)):
             print(str(i+1) + ". " + pokeList[i])
@@ -91,6 +93,22 @@ def changePokemon():
     for i in range(0, 4):
         print("Move number " + str(i+1) + ": " + pokeData.moves[i].name)
     print("")
+
+    print("What would you like to change about " + pokeData.name + "?")
+    dataToChange = input(">>> ")
+    dataToChange = dataToChange.lower()
+    if dataToChange == "move" or dataToChange == "moves":
+        moveChanger(pokeNum-1)
+    elif dataToChange == "stats" or dataToChange == "stat":
+        statChange(pokenum-1)
+    elif dataToChange == "name":
+        pass#code for changing name
+    elif dataToChange == "species":
+        pass#code for changing Species
+    elif dataToChange == "type" or dataToChange == "types":
+        pass #code to change type
+
+
 
 bank = PokeBank("realBankFile.txt")
 bank.loadBank()

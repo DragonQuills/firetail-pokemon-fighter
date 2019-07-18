@@ -1,2 +1,1 @@
-Doggo, Lillipup, normal, , , , , , Tackle, Bite, , 
-Catty, Meowth, normal, , , , , , , , , 
+Dog, dog, , , , , , , , , , 
