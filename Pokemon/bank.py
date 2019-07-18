@@ -51,5 +51,3 @@ class PokeBank:
             print("Error occured reading from file.")
             loadFile.close()
             return
-
-bank = PokeBank("testBankLoad.txt")

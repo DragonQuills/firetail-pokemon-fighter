@@ -1,5 +1,11 @@
 from bank import PokeBank
 
+def moveChanger(pokeNum):
+    global bank
+    currPokemon = bank.allPokemon[pokeNum]
+    print("You're changing the moves of " + currPokemon.name)
+
+
 def newPokemon():
     global bank
     newName = None
@@ -62,7 +68,6 @@ def changePokemon():
     pokeNum = " "
     pokeData = ""
     while(pokeNum != "quit"):
-        print("")
         print("Which Pokemon would you like to change? (Enter their number)")
         for i in range(0, len(pokeList)):
             print(str(i+1) + ". " + pokeList[i])
@@ -75,7 +80,7 @@ def changePokemon():
                 return
             print("Please enter the number of the Pokemon, NOT their name")
             continue
-    pokeData = bank.allPokemon[pokeList[pokeNum-1]]
+    pokeData = bank.allPokemon[pokeNum-1]
 
     print("Here's the current data on that Pokemon...")
     print("")
@@ -93,10 +98,10 @@ def changePokemon():
     for i in range(0, 4):
         print("Move number " + str(i+1) + ": " + pokeData.moves[i].name)
     print("")
-
     print("What would you like to change about " + pokeData.name + "?")
     dataToChange = input(">>> ")
     dataToChange = dataToChange.lower()
+    print("")
     if dataToChange == "move" or dataToChange == "moves":
         moveChanger(pokeNum-1)
     elif dataToChange == "stats" or dataToChange == "stat":
