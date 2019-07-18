@@ -58,10 +58,39 @@ def newPokemon():
 def changePokemon():
     global bank
     pokeList = bank.getAllNames()
-    print("Which Pokeon would you like to change?")
-    for i in range(0, len(pokeList)):
-        print(str(i+1) + ". " + pokeList[i])
+    pokeNum = " "
+    pokeData = ""
+    while(pokeNum != "quit"):
+        print("Which Pokemon would you like to change? (Enter their number)")
+        for i in range(0, len(pokeList)):
+            print(str(i+1) + ". " + pokeList[i])
+        pokeNum = input(">>> ")
+        try:
+            pokeNum = int(pokeNum)
+            break
+        except:
+            if pokeNum == "quit":
+                return
+            print("Please enter the number of the Pokemon, NOT their name")
+            continue
+    pokeData = bank.allPokemon[pokeList[pokeNum-1]]
 
+    print("Here's the current data on that Pokemon...")
+    print("")
+    print("Name: " + pokeData.name)
+    print("Species: " + pokeData.species)
+    print("Type 1: " + pokeData.types[0])
+    if(pokeData.types[1] == ""):
+        print("Type 2: N/A")
+    else:
+        print("Type 2: " + pokeData.types[1])
+    print("HP: " + pokeData.stats["hp"])
+    print("ATK: " + pokeData.stats["atk"])
+    print("DEF: " + pokeData.stats["def"])
+    print("SPD: " + pokeData.stats["spd"])
+    for i in range(0, 4):
+        print("Move number " + str(i+1) + ": " + pokeData.moves[i].name)
+    print("")
 
 bank = PokeBank("realBankFile.txt")
 bank.loadBank()

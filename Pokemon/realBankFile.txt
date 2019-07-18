@@ -1,1 +1,2 @@
-Cutie, Mudkip, water, , 35, 8, 6, 6, Water Gun, Mud-Slap, tackel, 
+Doggo, Lillipup, normal, , , , , , Tackle, Bite, , 
+Catty, Meowth, normal, , , , , , , , , 

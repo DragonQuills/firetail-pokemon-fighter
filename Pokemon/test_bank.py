@@ -5,7 +5,7 @@ def test_adds_pokemon():
     #adding a pokmeon to the bank
     bank = PokeBank()
     bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
-    assert bank.allPokemon["Jazz"].name == "Jazz"
+    assert bank.allPokemon[0].name == "Jazz"
 
 def test_returns_names():
     #adding several pokemon and returning their names
@@ -28,8 +28,8 @@ def test_loads_correctly():
     bank.loadBank()
     assert bank.getAllNames()[0] == "Jackie"
     assert bank.getAllNames()[1] == "Doggo"
-    assert bank.allPokemon["Jackie"].types[0] == "grass"
-    assert bank.allPokemon["Doggo"].types[1] == ""
+    assert bank.allPokemon[0].types[0] == "grass"
+    assert bank.allPokemon[1].types[1] == ""
     assert bank
 
 def test_saves_then_loads():
