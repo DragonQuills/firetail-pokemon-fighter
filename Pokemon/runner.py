@@ -49,7 +49,6 @@ def statChanger(pokeNum, statToChange):
             print("Either that wasn't a valid stat name or the value you entered wasn't a number.")
     return currPokemon
 
-
 def newPokemon():
     global bank
     newName = None
@@ -182,17 +181,57 @@ def changePokemon():
         anythingElse = input(">>> ")
     print("")
 
+def battleRunner():
+    pass
 
+def battleSetup():
+    global bank
+    pokeList = bank.getAllNames()
+    print("")
+    print("Let's get setup for a battle!")
+    userChoice = ""
+    while userChoice not in {"1", "3", "quit"}:
+        print("The current Pokemon who can battle are...")
+        for i in range(0, len(pokeList)):
+            print(str(i+1) + ". " + pokeList[i])
+        print("What would you like to do?")
+        print("1. Pick battlers")
+        print("2. Create a new Pokemon")
+        print("3. Go back")
+        userchoice = input(">>> ")
+        if userChoice == "2":
+            newPokemon()
+        if userChoice == "3" or userChoice == "quit":
+            return
+
+    pokemon1 = None
+    pokemon2 = None
+    while pokemon1 == None or pokemon2 == None
+        try:
+            print("Which Pokemon is the first combatent? (Type their number, not their name)")
+            pokemon1 = bank.allPokemon[int(input(">>> "))]
+            print("Which Pokemon is the second combatent?")
+            pokemon2 = bank.allPokemon[int(input(">>> "))]
+        except:
+            print("Something went wrong, maybe you didn't enter a number?")
+    print("The Pokemon " + pokemon1.name " and " + pokemon2.name + " will battle. ")
+    print("Is this correct?")
+    correct = input(">>> ")
+    if correct.lower in {"n", "no", "quit"}:
+        return
+    else:
+        battleRunner(pokemon1, pokemon2)
 
 bank = PokeBank("realBankFile.txt")
 bank.loadBank()
 choice = "0"
 print("Welcome Firetail!")
-while choice != "3" and choice != "quit" and choice != "exit":
+while choice != "4" and choice != "quit" and choice != "exit":
     print ("What would you like to do?")
     print ("1. Create a new Pokemon")
     print ("2. Change something about an existing Pokemon")
-    print ("3. Quit")
+    print ("3. Start a battle!")
+    print ("4. Quit")
     choice = input(">>> ")
     print("")
 
@@ -200,5 +239,7 @@ while choice != "3" and choice != "quit" and choice != "exit":
         newPokemon()
     elif(choice == "2"):
         changePokemon()
+    elif(choice == "3"):
+        battleSetup()
 bank.saveBank()
 print("Great, see you again soon!")
