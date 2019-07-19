@@ -174,6 +174,7 @@ def changePokemon():
             break
         else:
             bank.allPokemon[pokeNum] = pokeData
+            bank.saveBank()
         print("Anything else you want to change about that Pokemon?")
         anythingElse = input(">>> ")
     print("")
