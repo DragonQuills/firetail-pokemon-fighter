@@ -1,0 +1,2 @@
+Choco, Cherim, grass, fire, 75, 30, 20, 100, Solar Beam, Mega Drain, Grass Knot, Vine Whip
+Susan, Vanillish, ice, water, 45, 70, 27, 31, Ice Beam, , , 
