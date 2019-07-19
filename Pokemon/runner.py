@@ -1,4 +1,5 @@
 from bank import PokeBank
+from pokemonClass import Pokemon
 
 def moveChanger(pokeNum):
     global bank
@@ -23,11 +24,11 @@ def statChanger(pokeNum, statToChange):
         pass
     elif statToChange == "hitpoints":
         statToChange = "hp"
-    elif statToChange == "attack"
+    elif statToChange == "attack":
         statToChange = "atk"
     elif statToChange == "defense":
         statToChange == "def"
-    elif statToChange == "speed"
+    elif statToChange == "speed":
         statToChange == "spd"
     else:
         print("The current stats of " + currPokemon.name + " are...")
@@ -78,22 +79,9 @@ def newPokemon():
             print("Please enter move number " + str(i+1) + " or hit enter to leave it blank.")
             moves[i] = input(">>> ")
         print("")
-        print("Here's the info you gave me...")
-        print("")
-        print("Name: " + newName)
-        print("Species: " + species)
-        print("Type 1: " + type1)
-        if(type2 == ""):
-            print("Type 2: N/A")
-        else:
-            print("Type 2: " + type2)
-        print("HP: " + stats[0])
-        print("ATK: " + stats[1])
-        print("DEF: " + stats[2])
-        print("SPD: " + stats[3])
-        for i in range(0, 4):
-            print("Move number " + str(i+1) + ": " + moves[i])
-        print("")
+        newMon = Pokemon(newName, species, [type1, type2], stats, moves)
+        print("Here's the info that will be input. Some data may have been changed if it was invalid.")
+        displayData(newMon)
         print("Is that all correct?")
         allCorrect = input(">>> ")
         if len(allCorrect) > 0:
@@ -131,20 +119,7 @@ def changePokemon():
         pokeData = bank.allPokemon[pokeNum]
         print("Here's the current data on that Pokemon...")
         print("")
-        print("Name: " + pokeData.name)
-        print("Species: " + pokeData.species)
-        print("Type 1: " + pokeData.types[0])
-        if(pokeData.types[1] == ""):
-            print("Type 2: N/A")
-        else:
-            print("Type 2: " + pokeData.types[1])
-        print("HP: " + str(pokeData.stats["hp"]))
-        print("ATK: " + str(pokeData.stats["atk"]))
-        print("DEF: " + str(pokeData.stats["def"]))
-        print("SPD: " + str(pokeData.stats["spd"]))
-        for i in range(0, 4):
-            print("Move number " + str(i+1) + ": " + pokeData.moves[i].name)
-        print("")
+        displayData(pokeData)
         print("What would you like to change about " + pokeData.name + "?")
         dataToChange = input(">>> ")
         dataToChange = dataToChange.lower()
@@ -181,7 +156,23 @@ def changePokemon():
         anythingElse = input(">>> ")
     print("")
 
-def battleRunner():
+def displayData(pokemon):
+    print("Name: " + pokemon.name)
+    print("Species: " + pokemon.species)
+    print("Type 1: " + pokemon.types[0])
+    if(pokemon.types[1] == ""):
+        print("Type 2: N/A")
+    else:
+        print("Type 2: " + pokemon.types[1])
+    print("HP: " + str(pokemon.stats["hp"]))
+    print("ATK: " + str(pokemon.stats["atk"]))
+    print("DEF: " + str(pokemon.stats["def"]))
+    print("SPD: " + str(pokemon.stats["spd"]))
+    for i in range(0, 4):
+        print("Move number " + str(i+1) + ": " + pokemon.moves[i].name)
+    print("")
+
+def battleRunner(pokemon1, pokemon2):
     pass
 
 def battleSetup():
@@ -194,19 +185,21 @@ def battleSetup():
         print("The current Pokemon who can battle are...")
         for i in range(0, len(pokeList)):
             print(str(i+1) + ". " + pokeList[i])
+        print("")
         print("What would you like to do?")
         print("1. Pick battlers")
         print("2. Create a new Pokemon")
         print("3. Go back")
-        userchoice = input(">>> ")
+        userChoice = input(">>> ")
         if userChoice == "2":
             newPokemon()
+            pokeList = bank.getAllNames()
         if userChoice == "3" or userChoice == "quit":
             return
 
     pokemon1 = None
     pokemon2 = None
-    while pokemon1 == None or pokemon2 == None
+    while pokemon1 == None or pokemon2 == None:
         try:
             print("Which Pokemon is the first combatent? (Type their number, not their name)")
             pokemon1 = bank.allPokemon[int(input(">>> "))]
@@ -214,7 +207,7 @@ def battleSetup():
             pokemon2 = bank.allPokemon[int(input(">>> "))]
         except:
             print("Something went wrong, maybe you didn't enter a number?")
-    print("The Pokemon " + pokemon1.name " and " + pokemon2.name + " will battle. ")
+    print("The Pokemon " + pokemon1.name + " and " + pokemon2.name + " will battle. ")
     print("Is this correct?")
     correct = input(">>> ")
     if correct.lower in {"n", "no", "quit"}:
