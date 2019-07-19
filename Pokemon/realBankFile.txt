@@ -1,1 +1,1 @@
-Choco, Cherim, grass, fire, 20, 40, 20, 30, Solar Beam, Absorb, Grass Knot, Vine Whip
+Choco, Cherim, grass, fire, 20, 40, 20, 30, Solar Beam, Mega Drain, Grass Knot, Vine Whip
