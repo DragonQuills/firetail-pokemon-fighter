@@ -11,18 +11,36 @@ def moveChanger(pokeNum):
     newMove = input("What's the new move's name?\n >>> ")
     if moveNum == "quit" or newMove == "quit" or moveNum == "q" or newMove == "q":
         return None
-    currPokemon.changeMove(int(moveNum), newMove)
+    if currPokemon.changeMove(int(moveNum), newMove) == False:
+        print("That wasn't a valid move (Did you misspell it?)")
+        currPokemon = None
     return currPokemon
 
-def statChanger(pokeNum): #NOT DONE YET
+def statChanger(pokeNum, statToChange):
     global blank
-    print("The current stats of " + currPokemon.name + " are...")
     currPokemon = bank.allPokemon[pokeNum]
-    print("HP: " + pokeData.stats["hp"])
-    print("ATK: " + pokeData.stats["atk"])
-    print("DEF: " + pokeData.stats["def"])
-    print("SPD: " + pokeData.stats["spd"])
-    return None
+    if statToChange in {"hp", "atk", "def", "spd"}:
+        pass
+    else:
+        print("The current stats of " + currPokemon.name + " are...")
+        currPokemon = bank.allPokemon[pokeNum]
+        print("HP: " + currPokemon.stats["hp"])
+        print("ATK: " + currPokemon.stats["atk"])
+        print("DEF: " + currPokemon.stats["def"])
+        print("SPD: " + currPokemon.stats["spd"])
+        print("")
+        print("What stat would you like to change?")
+        statToChange = input(">>> ")
+    print("What value would you like to change it to?")
+    newValue = input(">>> ")
+    if statToChange == "quit" or newValue == "quit":
+        currPokemon = None
+    else:
+        if currPokemon.changeStat(statToChange, newValue) == False:
+            currPokemon = None
+            print("That wasn't a valid stat name.")
+    return currPokemon
+
 
 def newPokemon():
     global bank
@@ -103,7 +121,7 @@ def changePokemon():
     pokeData = bank.allPokemon[pokeNum]
 
     anythingElse = "y"
-    while anythingElse != "n" and anythingElse != "no" and anythingElse != "quit" and anythingElse != "q":
+    while anythingElse != "n" and anythingElse != "no" and anythingElse != "quit":
         print("Here's the current data on that Pokemon...")
         print("")
         print("Name: " + pokeData.name)
@@ -127,8 +145,8 @@ def changePokemon():
         #changing various attributes based on user selection
         if dataToChange == "move" or dataToChange == "moves":
             pokeData = moveChanger(pokeNum)
-        elif dataToChange == "stats" or dataToChange == "stat":
-            pokeData = statChanger(pokeNum)
+        elif dataToChange in {"stats", "stat", "hp", "atk", "def", "spd", "attack", "defense", "speed"}:
+            pokeData = statChanger(pokeNum, dataToChange)
 
         #Firetail, these are yours! ask the user for what they want to change the pokemone's data to.
         #For the name and species, after you get the input, just do pokeData.changeName(<new name variable>)
@@ -144,8 +162,12 @@ def changePokemon():
             pass#code for changing species
         elif dataToChange == "type" or dataToChange == "types":
             pass #code to change type
-
         #Stop changing code past here
+
+        else:
+            print("That wasn't a valid option. (Did you misspell it?)")
+            pokeData == None
+
 
         if pokeData == None:
             print("Change aborted.")

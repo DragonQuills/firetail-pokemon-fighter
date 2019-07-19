@@ -9,6 +9,7 @@ class Pokemon:
         self.moves = self._createMovesList(newMoves)
 
     def changeStat(self, statName, newValue):
+        statName.lower()
         if statName == "hp":
             self.stats["hp"] = newValue
         elif statName == "atk":
@@ -17,6 +18,9 @@ class Pokemon:
             self.stats["def"] = newValue
         elif statName == "spd":
             self.stats["spd"] = newValue
+        else:
+            return False
+        return True
 
     def changeMove(self, moveNum, newMoveName):
         moveNum = moveNum - 1
