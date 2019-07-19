@@ -3,7 +3,7 @@ from moves import Move
 import pytest
 
 def test_initializes_correctly():
-    #pokemon with type, stats, and moves
+    #pokemon with type, stats, and blank moves
     steve = Pokemon("Steve", "Charmander", ["fire",""], [20, 5, 5, 5], ["ember", "scratch", "", ""])
     assert steve.name == "Steve"
     assert steve.species == "Charmander"
@@ -25,6 +25,16 @@ def test_initializes_correctly():
     assert jazz.stats["hp"] == 0
     assert jazz.types == ["", ""]
     assert jazz.moves[0].name == ""
+
+    #tests pokemon class handles bad inputs correctly
+    badType = Pokemon("Bad Type", "Pokemon", ["normal", "punching"], [10, 10, 10, 10], ["tackle", "", "", ""])
+    assert badType.types[1] == ""
+
+    missingStat = Pokemon("Missing Stat", "Pokemon", ["normal", "fighting"], ["", 10, 10, 10], ["tackle", "", "", ""])
+    assert missingStat.stats["hp"] == 0
+
+    badStat = Pokemon("Missing Stat", "Pokemon", ["normal", "fighting"], ["fishfinger", 10, 10, 10], ["tackle", "", "", ""])
+    assert badStat.stats["hp"] == 0
 
 def test_changes_stat():
     #testing default stats
@@ -74,7 +84,7 @@ def test_changes_type():
     trina.changeType(["grass"])
     assert trina.types[0] == "grass"
     assert trina.types[1] == ""
-    
+
     #tests changing both types at once
     tori = Pokemon("Tori", "Torchic", ["fire", ""])
     tori.changeType(["fire", "fighting"])
