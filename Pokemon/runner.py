@@ -7,12 +7,12 @@ def moveChanger(pokeNum):
     for i in range(0, 4):
         print("Move number " + str(i+1) + ": " + currPokemon.moves[i].name)
     print("")
-    moveNum = input("Which move would you like to change?\n>>> ")
+    moveNum = input("Which move would you like to change? (Please enter the number, not the name)\n>>> ")
     newMove = input("What's the new move's name?\n>>> ")
     if moveNum == "quit" or newMove == "quit" or moveNum == "q" or newMove == "q":
         return None
     if currPokemon.changeMove(int(moveNum), newMove) == False:
-        print("That wasn't a valid move (Did you misspell it?)")
+        print("Either that wasn't a valid move name or you didn't pick a valid move number")
         currPokemon = None
     return currPokemon
 
@@ -21,6 +21,14 @@ def statChanger(pokeNum, statToChange):
     currPokemon = bank.allPokemon[pokeNum]
     if statToChange in {"hp", "atk", "def", "spd"}:
         pass
+    elif statToChange == "hitpoints":
+        statToChange = "hp"
+    elif statToChange == "attack"
+        statToChange = "atk"
+    elif statToChange == "defense":
+        statToChange == "def"
+    elif statToChange == "speed"
+        statToChange == "spd"
     else:
         print("The current stats of " + currPokemon.name + " are...")
         currPokemon = bank.allPokemon[pokeNum]
@@ -154,8 +162,6 @@ def changePokemon():
         #Becasue each pokemon can have up to two types, you'll have to ask the user for type1 and type2
         #then, when you have both types, do pokeData.changeType([newType1, newType2]) or whatever you named the variables
         #The [ ] are important, it won't work right without them!
-        #I might add some error handling for the types later to make sure they're actually types and
-        #not gibberish, but rn there is def nothing stopping you from entering fart type
         elif dataToChange == "name":
             pass#code for changing name
         elif dataToChange == "species":
@@ -163,11 +169,9 @@ def changePokemon():
         elif dataToChange == "type" or dataToChange == "types":
             pass #code to change type
         #Stop changing code past here
-
         else:
             print("That wasn't a valid option. (Did you misspell it?)")
             pokeData == None
-
 
         if pokeData == None:
             print("Change aborted.")
