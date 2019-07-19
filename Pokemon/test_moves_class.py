@@ -24,15 +24,15 @@ def test_initializes_correctly():
     #testing for non-valid moves
     blank = Move("")
     assert blank.name == ""
-    assert blank.type == ""
-    assert blank.power == -1
-    assert blank.accuracy == -1
+    assert blank.type == "normal"
+    assert blank.power == 0
+    assert blank.accuracy == 0
 
     fake = Move("fake")
-    assert fake.name == "fake"
-    assert fake.type == ""
-    assert fake.power == -1
-    assert fake.accuracy == -1
+    assert fake.name == "Struggle"
+    assert fake.type == "normal"
+    assert fake.power == 50
+    assert fake.accuracy == None
 
 def test_equals_overload_works():
     scratch1 = Move("scratch")

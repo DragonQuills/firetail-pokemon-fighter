@@ -63,7 +63,7 @@ class Pokemon:
         newMove = Move(newMoveName)
 
         #if this isn't a real move, return false and don't change the move
-        if newMove.accuracy == -1:
+        if newMove.name == "Struggle" or newMove.name == "":
             return False
 
         #if it is a real move
