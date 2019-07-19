@@ -91,3 +91,6 @@ class Pokemon:
         except:
             return False
         return True
+
+    def changeName(self, newName):
+        self.name = newName
