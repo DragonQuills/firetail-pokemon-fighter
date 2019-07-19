@@ -7,8 +7,8 @@ def moveChanger(pokeNum):
     for i in range(0, 4):
         print("Move number " + str(i+1) + ": " + currPokemon.moves[i].name)
     print("")
-    moveNum = input("Which move would you like to change?\n >>> ")
-    newMove = input("What's the new move's name?\n >>> ")
+    moveNum = input("Which move would you like to change?\n>>> ")
+    newMove = input("What's the new move's name?\n>>> ")
     if moveNum == "quit" or newMove == "quit" or moveNum == "q" or newMove == "q":
         return None
     if currPokemon.changeMove(int(moveNum), newMove) == False:
@@ -24,10 +24,10 @@ def statChanger(pokeNum, statToChange):
     else:
         print("The current stats of " + currPokemon.name + " are...")
         currPokemon = bank.allPokemon[pokeNum]
-        print("HP: " + currPokemon.stats["hp"])
-        print("ATK: " + currPokemon.stats["atk"])
-        print("DEF: " + currPokemon.stats["def"])
-        print("SPD: " + currPokemon.stats["spd"])
+        print("HP: " + str(currPokemon.stats["hp"]))
+        print("ATK: " + str(currPokemon.stats["atk"]))
+        print("DEF: " + str(currPokemon.stats["def"]))
+        print("SPD: " + str(currPokemon.stats["spd"]))
         print("")
         print("What stat would you like to change?")
         statToChange = input(">>> ")
@@ -38,7 +38,7 @@ def statChanger(pokeNum, statToChange):
     else:
         if currPokemon.changeStat(statToChange, newValue) == False:
             currPokemon = None
-            print("That wasn't a valid stat name.")
+            print("Either that wasn't a valid stat name or the value you entered wasn't a number.")
     return currPokemon
 
 
@@ -118,10 +118,10 @@ def changePokemon():
             print("Please enter the number of the Pokemon, NOT their name")
             continue
     pokeNum = pokeNum-1
-    pokeData = bank.allPokemon[pokeNum]
 
     anythingElse = "y"
     while anythingElse != "n" and anythingElse != "no" and anythingElse != "quit":
+        pokeData = bank.allPokemon[pokeNum]
         print("Here's the current data on that Pokemon...")
         print("")
         print("Name: " + pokeData.name)
@@ -131,10 +131,10 @@ def changePokemon():
             print("Type 2: N/A")
         else:
             print("Type 2: " + pokeData.types[1])
-        print("HP: " + pokeData.stats["hp"])
-        print("ATK: " + pokeData.stats["atk"])
-        print("DEF: " + pokeData.stats["def"])
-        print("SPD: " + pokeData.stats["spd"])
+        print("HP: " + str(pokeData.stats["hp"]))
+        print("ATK: " + str(pokeData.stats["atk"]))
+        print("DEF: " + str(pokeData.stats["def"]))
+        print("SPD: " + str(pokeData.stats["spd"]))
         for i in range(0, 4):
             print("Move number " + str(i+1) + ": " + pokeData.moves[i].name)
         print("")
@@ -171,7 +171,6 @@ def changePokemon():
 
         if pokeData == None:
             print("Change aborted.")
-            break
         else:
             bank.allPokemon[pokeNum] = pokeData
             bank.saveBank()
