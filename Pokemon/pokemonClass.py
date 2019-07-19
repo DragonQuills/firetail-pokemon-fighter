@@ -45,15 +45,14 @@ class Pokemon:
         self.moves = self._createMovesList(newMoves)
 
     def changeStat(self, statName, newValue):
-        statName.lower()
-        if statName == "hp":
-            self.stats["hp"] = newValue
-        elif statName == "atk":
-            self.stats["atk"] = newValue
-        elif statName == "def":
-            self.stats["def"] = newValue
-        elif statName == "spd":
-            self.stats["spd"] = newValue
+        staName = statName.lower()
+        if statName in {"hp", "atk", "def", "spd"}:
+            try:
+                self.stats[statName] = int(newValue)
+            except:
+                return False
+            if self.stats[statName] < 0:
+                self.stats[statName] = 0
         else:
             return False
         return True
@@ -83,8 +82,12 @@ class Pokemon:
         return movesList
 
     def changeType(self, typesList):
-        if len(typesList) == 2: #if given two types
-            self.types = typesList
-        else: #if only given one type
-            self.types = typesList #make the list that new list
-            self.types.append("") #then add a blank type so the database will save it correctly
+        try:
+            self.types[0] = pb.type_(typesList[0].lower()).name
+        except:
+            return False
+        try:
+            self.types[1] = pb.type_(typesList[1].lower()).name
+        except:
+            return False
+        return True
