@@ -4,15 +4,15 @@ from pokemonClass import Pokemon
 def test_adds_pokemon():
     #adding a pokmeon to the bank
     bank = PokeBank()
-    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
+    bank.addPokemonFromData("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
     assert bank.allPokemon[0].name == "Jazz"
 
 def test_returns_names():
     #adding several pokemon and returning their names
     bank = PokeBank()
-    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
-    bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
-    bank.addPokemon("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
+    bank.addPokemonFromData("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5])
+    bank.addPokemonFromData("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
+    bank.addPokemonFromData("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
     allMon = bank.getAllNames()
     assert allMon[0] == "Jazz"
     assert allMon[1] == "Shell"
@@ -34,9 +34,9 @@ def test_loads_correctly():
 
 def test_saves_then_loads():
     bank = PokeBank("testBankSave.txt")
-    bank.addPokemon("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5], ["tackle", "ember", "scratch", "growl"])
-    bank.addPokemon("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
-    bank.addPokemon("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
+    bank.addPokemonFromData("Jazz", "Bellsprout", ["grass", "poison"], [15, 5, 5, 5], ["tackle", "ember", "scratch", "growl"])
+    bank.addPokemonFromData("Shell", "Dragonite", ["dragon", "flying"], [65, 22, 18, 35])
+    bank.addPokemonFromData("Doggo", "Lillipup", ["normal", ""], [15, 5, 5, 5])
     bank.saveBank()
 
     bank.loadBank()

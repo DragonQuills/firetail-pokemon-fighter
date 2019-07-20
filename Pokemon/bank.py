@@ -5,8 +5,11 @@ class PokeBank:
         self.allPokemon = []
         self.saveFileName = fileName
 
-    def addPokemon(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
+    def addPokemonFromData(self, nickname, pokemonSpecies, pokeTypes = ["", ""], stats = [0, 0, 0, 0], newMoves = ["", "", "", ""]):
         self.allPokemon.append(Pokemon(nickname, pokemonSpecies, pokeTypes, stats, newMoves))
+
+    def addPokemonFromObject(self, pokemon):
+        self.allPokemon.append(pokemon)
 
     def getAllNames(self):
         pokeList = []
@@ -45,7 +48,7 @@ class PokeBank:
                 types = [data[2], data[3]]
                 stats = [data[4], data[5], data[6], data[7]]
                 moves = [data[8], data[9], data[10], data[11]]
-                self.addPokemon(name, species, types, stats, moves)
+                self.addPokemonFromData(name, species, types, stats, moves)
             loadFile.close()
         except:
             print("Error occured reading from file.")

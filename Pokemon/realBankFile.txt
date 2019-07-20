@@ -2,5 +2,6 @@ Choco, Cherim, grass, fire, 75, 30, 20, 110, Solar Beam, Mega Drain, Grass Knot,
 Susan, Vanillish, ice, water, 120, 70, 27, 31, Ice Beam, Petal Dance, , Struggle
 Snek, Ekans, poison, , 0, 0, 20, 25, Tackle, Poison Sting, Struggle, Struggle
 Mustang, litten, fire, , 0, 5, 4, 8, Ember, Scratch, , Struggle
-Mudkip, Mudkip, water, , 20, 6, 7, 4, Water Gun, Tackle, , 
+Mudkip, Mudkip, water, , 20, 6, 7, 4, Water Gun, Tackle, , Struggle
 Doggo, Lillipup, normal, , 10, 0, 7, 6, Tackle, Bite, Struggle, 
+Spoopy, Banette, ghost, , 30, 22, 19, 10, Shadow Sneak, Feint Attack, Astonish, Knock Off

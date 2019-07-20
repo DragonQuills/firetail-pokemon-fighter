@@ -59,6 +59,7 @@ def newPokemon():
     type2 = None
     moves = ["", "", "", ""]
     allCorrect = "n"
+    newMon = None
     print ("Got it, create a new Pokeon.")
 
     while allCorrect != "y":
@@ -87,7 +88,7 @@ def newPokemon():
         if len(allCorrect) > 0:
             allCorrect = allCorrect[0].lower()
     print("I'm creating your Pokemon now. This might take a sec, hold on...")
-    bank.addPokemon(newName, species, [type1, type2], stats, moves)
+    bank.addPokemonFromObject(newMon)
     bank.saveBank()
     print("Got all that! Your new Pokemon has been created.")
     print("")
@@ -202,9 +203,9 @@ def battleSetup():
     while pokemon1 == None or pokemon2 == None:
         try:
             print("Which Pokemon is the first combatent? (Type their number, not their name)")
-            pokemon1 = bank.allPokemon[int(input(">>> "))]
+            pokemon1 = bank.allPokemon[int(input(">>> ")) - 1]
             print("Which Pokemon is the second combatent?")
-            pokemon2 = bank.allPokemon[int(input(">>> "))]
+            pokemon2 = bank.allPokemon[int(input(">>> ")) - 1]
         except:
             print("Something went wrong, maybe you didn't enter a number?")
     print("The Pokemon " + pokemon1.name + " and " + pokemon2.name + " will battle. ")
