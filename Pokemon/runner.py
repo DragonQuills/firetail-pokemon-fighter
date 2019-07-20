@@ -200,12 +200,16 @@ def battleSetup():
 
     pokemon1 = None
     pokemon2 = None
+    pokemon1Num = None
+    pokemon2Num = None
     while pokemon1 == None or pokemon2 == None:
         try:
             print("Which Pokemon is the first combatent? (Type their number, not their name)")
-            pokemon1 = bank.allPokemon[int(input(">>> ")) - 1]
+            pokemon1Num = int(input(">>> ")) - 1
+            pokemon1 = bank.allPokemon[pokemon1Num]
             print("Which Pokemon is the second combatent?")
-            pokemon2 = bank.allPokemon[int(input(">>> ")) - 1]
+            pokemon2Num = int(input(">>> ")) -1
+            pokemon2 = bank.allPokemon[pokemon2Num]
         except:
             print("Something went wrong, maybe you didn't enter a number?")
     print("The Pokemon " + pokemon1.name + " and " + pokemon2.name + " will battle. ")
@@ -213,8 +217,19 @@ def battleSetup():
     correct = input(">>> ")
     if correct.lower in {"n", "no", "quit"}:
         return
-    else:
-        battleRunner(pokemon1, pokemon2)
+
+    print("The current stats for these Pokemon are...")
+    displayData(pokemon1)
+    print("")
+    displayData(pokemon2)
+
+    print("Do you need to change anything about these Pokemon?")
+    changeSomething = input(">>> ")
+    if changeSomething in {"y", "yes"}:
+        changePokemon()
+        pokemon1 = bank.allPokemon[pokemon1Num]
+        pokemon2 = bank.allPokemon[pokemon2Num]
+    battleRunner(pokemon1, pokemon2)
 
 bank = PokeBank("realBankFile.txt")
 bank.loadBank()
