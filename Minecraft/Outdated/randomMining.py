@@ -1,29 +1,5 @@
 import random
 
-def woodenPickaxe():
-    itemDecider = random.randint(1,100)
-    itemType = "Nothing!"
-
-    if itemDecider >= 1 and itemDecider < 20:
-        itemType = "Nothing!"
-
-    if itemDecider >= 20 and itemDecider < 40:
-        itemType = "cobblestone"
-
-    if itemDecider >= 40 and itemDecider < 60:
-        itemType = "andesite"
-
-    if itemDecider >= 60 and itemDecider < 80:
-        itemType = "granite"
-
-    if itemDecider >= 80 and itemDecider <= 100:
-        itemType = "diortie"
-
-    if itemType == "Nothing!":
-        print ("You found nothing! Better Luck next time!")
-    else:
-        print ("You found " + str(itemType) + ".")
-
 def stonePickaxe():
     itemDecider = random.randint(1, 100)
     itemNumber = 0
@@ -45,7 +21,7 @@ def stonePickaxe():
         itemNumber = random.randint(1,5)
 
     if itemNumber == 0:
-        print("You found nothing! Better Luck next time!")
+        print ("You found nothing! Better Luck next time!")
     else:
         print ("You find " + str(itemNumber) + " piece(s) of " + str(itemType) + ".")
 
@@ -157,13 +133,9 @@ def diamondPickaxe():
         itemType = "diamond"
         itemNumber = random.randint(1,8)
 
-    if itemDecider >= 95 and itemDecider < 98:
+    if itemDecider >= 95 and itemDecider <= 100:
         itemType = "obsidian"
         itemNumber = random.randint(1,2)
-
-    if itemDecider >= 98 and itemDecider <=100:
-        itemType = "magma block"
-        itemNumber = random.randint(1,4)
 
     if itemNumber == 0:
         print ("You found nothing! Better Luck next time!")
@@ -173,24 +145,20 @@ def diamondPickaxe():
 
 
 print ("Please select a pickaxe:")
-print ("1. Wooden Pickaxe")
-print ("2. Stone Pickaxe")
-print ("3. Iron Pickaxe")
-print ("4. Gold Pickaxe")
-print ("5. Diamond Pickaxe")
+print ("1. Stone Pickaxe")
+print ("2. Iron Pickaxe")
+print ("3. Gold Pickaxe")
+print ("4. Diamond Pickaxe")
 
 userSelect = input("Pickaxe type: ")
 if userSelect == "1":
-    woodenPickaxe()
-
-if userSelect == "2":
     stonePickaxe()
 
-if userSelect == "3":
+if userSelect == "2":
     ironPickaxe()
 
-if userSelect == "4":
+if userSelect == "3":
     goldPickaxe()
 
-if userSelect == "5":
+if userSelect == "4":
     diamondPickaxe()
