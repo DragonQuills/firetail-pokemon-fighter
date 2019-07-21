@@ -116,7 +116,7 @@ def changePokemon():
     pokeNum = pokeNum-1
 
     anythingElse = "y"
-    while anythingElse != "n" and anythingElse != "no" and anythingElse != "quit":
+    while anythingElse != "n" and anythingElse != "no" and anythingElse != "quit": ##loop before "Anything else if invalid option", add move changes by "move 1" or "move number 1", and tell what you can enter
         pokeData = bank.allPokemon[pokeNum]
         print("Here's the current data on that Pokemon...")
         print("")
